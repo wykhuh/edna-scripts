@@ -28,8 +28,8 @@ reformat_sample_barcodes <- function(raw_barcodes, valid_barcodes) {
   new_barcodes
 }
 
-rename_file <- function(file) {
-  parts <- strsplit(file, ".", fixed = TRUE)[[1]]
-  extenstion <- tail(parts, n = 1)
-  paste(strsplit(file, extenstion), "renamed.csv", sep = "")
+rename_file <- function(path) {
+  parts <- strsplit(path, ".", fixed = TRUE)[[1]]
+  extension <- tail(parts, n = 1)
+  paste(strsplit(path, extension), "renamed.", extension, sep = "")
 }
