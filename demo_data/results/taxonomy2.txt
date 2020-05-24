@@ -1,0 +1,4 @@
+sum.taxonomy,X16S_ASWS_B0.35.S35.L001,X16S_ASWS_E0.36.S36.L001,X16S_K0723_A1.10.S10.L001,X16S_K0723_B2.11.S11.L001
+Bacteria;Firmicutes;Bacilli;Bacillales;Bacillaceae;Bacillus;,0,0,0,0
+Bacteria;Proteobacteria;Alphaproteobacteria;Caulobacterales;Caulobacteraceae;NA;,0,0,0,3
+Bacteria;Proteobacteria;Alphaproteobacteria;Caulobacterales;Caulobacteraceae;Phenylobacterium;Phenylobacterium sp. B6.10-61,0,0,0,0
