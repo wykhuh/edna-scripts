@@ -27,6 +27,39 @@ sum.taxonomy,X16S_ASWS_B0.35.S35.L001,X16S_ASWS_E0.36.S36.L001
 sum.taxonomy,ASWS_B0,ASWS_E0
 ```
 
+### add_taxa_rank_columns.R
+
+`add_taxa_rank_columns.R` - Read all the Anacapa taxonomy result files in a given directory, break up the sum.taxonomy string into separate ranks, and create new files
+with separate columns for each rank.
+
+original file 
+```
+sum.taxonomy
+```
+
+new file
+```
+sum.taxonomy  superkingdom  phylum  class  order  family  genus  species
+```
+
+#### Usage
+
+1. Edit the `setup` section of the script.
+
+ranks: ranks used in sum.taxonomy
+output_directory: directory for the new files
+sep: the separator used in the files 
+
+
+2. Run the script. Pass in the name of the directory that contains the Anacapa files.
+
+```
+$  Rscript add_taxa_rank_columns.R <directory>
+```
+
+A new directory will be created inside the original directory with the new files.
+
+
 ## Tests
 
 To run tests.

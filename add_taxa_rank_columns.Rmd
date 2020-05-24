@@ -1,0 +1,31 @@
+```{r}
+library(dplyr)
+library(tidyr)
+```
+
+```{r}
+# https://stackoverflow.com/a/34896965
+list.files(path = "demo_data", full.names = TRUE)
+
+```
+
+
+```{r}
+path = './demo_data/taxonomy.txt'
+df = read.csv(path)
+
+ranks =  c("superkingdom", "phylum", "class", "order", "family", "genus", "species")
+```
+
+
+```{r}
+# https://stackoverflow.com/a/24168383
+new_df <- df %>%
+  separate(sum.taxonomy, ranks, ";", remove = FALSE)
+
+# https://stackoverflow.com/a/19503330
+new_df[new_df == 'NA'] <- ''
+
+new_df
+```
+
