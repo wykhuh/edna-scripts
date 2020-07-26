@@ -66,7 +66,6 @@ sum.taxonomy,ASWS_B0,ASWS_E0
 metadata_file: path for the metadata file
 results_directory: path for the directory with the Anacapa results
 output_directory: directory for the new files
-sep: the separator used in the files 
 
 2. Run the script
 
@@ -99,7 +98,6 @@ s;p;c;;NA;g;s s             p       c                     g      s
 1. Edit the `setup` section of the script.
 
 output_directory: directory for the new files
-sep: the separator used in the files 
 
 
 2. Run the script. Pass in the name of the directory that contains the Anacapa files.

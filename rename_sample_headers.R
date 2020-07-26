@@ -8,8 +8,6 @@ source("./lib/process_csv.R")
 metadata_file <- "./demo_data/rename_sample_headers/metadata.csv"
 results_directory <- "./demo_data/rename_sample_headers/results"
 output_directory <- "renamed_samples"
-sep <- ","
-
 
 # =============
 # run script
@@ -19,6 +17,7 @@ directory <- results_directory
 nested_output_directory <- file.path(directory, output_directory)
 dir.create(nested_output_directory)
 
+sep <- get_delimiter(metadata_file)
 metadata <- import_csv(metadata_file, sep = sep)
 valid_barcodes <- metadata$sum.taxonomy
 
@@ -28,6 +27,7 @@ for (file in files) {
     file_name <- strsplit(file, directory)[[1]][2]
     output_file <- paste(nested_output_directory, file_name, sep = "")
 
+    sep <- get_delimiter(file)
     results_content <- import_csv(file, sep = sep)
     raw_barcodes <- colnames(results_content)
 

@@ -11,8 +11,6 @@ source("./lib/process_csv.R")
 # =============
 
 output_directory <- "with_rank_columns"
-sep <- ","
-
 
 # =============
 # run script
@@ -27,6 +25,8 @@ for (file in files) {
   if (file_test("-f", file)) {
     file_name <- strsplit(file, directory)[[1]][2]
     output_file <- paste(full_directory, file_name, sep = "")
+    
+    sep <- get_delimiter(file)
     df <- import_csv(file, sep = sep)
     add_taxon_rank_columns(df, output_file)
   }
