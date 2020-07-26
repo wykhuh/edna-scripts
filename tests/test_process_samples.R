@@ -92,3 +92,41 @@ describe("remove_blank_samples", {
   })
 })
 
+describe("get_ranks_for_taxon_string", {
+  it("returns ranks phylumn to species when given a phylym taxon string", {
+    str <- "ph;cl;or;fa;ge;sp"
+
+    results <- get_ranks_for_taxon_string(str)
+    expected <- c("phylum", "class", "order", "family", "genus", "species")
+
+    expect_equal(results, expected)
+  })
+
+
+  it("returns superkingdom to species when given a superkingdom taxon string", {
+    str <- "su;ph;cl;or;fa;ge;sp"
+
+    results <- get_ranks_for_taxon_string(str)
+    expected <- c(
+      "superkingdom", "phylum", "class", "order", "family",
+      "genus", "species"
+    )
+
+    expect_equal(results, expected)
+  })
+
+  it("handles sparse taxon strings", {
+    str <- "ph;;or;NA;ge;"
+
+    results <- get_ranks_for_taxon_string(str)
+    expected <- c("phylum", "class", "order", "family", "genus", "species")
+
+    expect_equal(results, expected)
+  })
+
+  it("raises error for invalid taxon strings", {
+    str <- "bad"
+
+    expect_error(get_ranks_for_taxon_string(str), "Invalid taxonomy string.")
+  })
+})

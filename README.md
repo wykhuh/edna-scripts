@@ -66,7 +66,6 @@ sum.taxonomy  superkingdom  phylum  class  order  family  genus  species
 
 1. Edit the `setup` section of the script.
 
-ranks: ranks used in sum.taxonomy
 output_directory: directory for the new files
 sep: the separator used in the files 
 
