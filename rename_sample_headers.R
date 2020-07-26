@@ -1,22 +1,14 @@
-source("./lib/csv_cleanup.R")
+source("./lib/process_samples.R")
+source("./lib/process_csv.R")
 
 # =============
 # setup
 # =============
 
-metadata_file <- "./demo_data/metadata.csv"
-results_directory <- "./demo_data/results"
+metadata_file <- "./demo_data/rename_sample_headers/metadata.csv"
+results_directory <- "./demo_data/rename_sample_headers/results"
 output_directory <- "renamed_samples"
 sep <- ","
-
-# =============
-# functions
-# =============
-
-import_csv <- function(path, sep = ",", header = TRUE,
-                       strings_factors = FALSE) {
-  read.csv(path, sep = sep, header = header, stringsAsFactors = strings_factors)
-}
 
 
 # =============

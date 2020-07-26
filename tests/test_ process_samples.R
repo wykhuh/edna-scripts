@@ -1,6 +1,6 @@
 library(testthat)
 
-source("../lib/csv_cleanup.R")
+source("../lib/process_samples.R")
 
 describe("fuzzy_find_matching_barcode", {
   context("original barcode does match a valid barcode")
@@ -92,10 +92,3 @@ describe("remove_blank_samples", {
   })
 })
 
-describe("rename_file", {
-  it('takes a path to file, and appends "rename" to the file name', {
-    path <- "./data/file.txt"
-
-    expect_equal(rename_file(path), "./data/file.renamed.txt")
-  })
-})

@@ -1,0 +1,4 @@
+sum.taxonomy,X18S_ASWS_B0.35.S35.L001,X18S_K0001_B2.11.S11.L001,X18S_K0002_B2.11.S11.L001
+Ascomycota;;Pleosporales;Delitschiaceae;Delitschia;Delitschia didyma,0,0,0
+Ascomycota;Dothideomycetes;Pleosporales;NA;NA;Pleosporales sp.,0,0,0
+Ascomycota;Dothideomycetes;Tubeufiales;Tubeufiaceae;NA;,0,0,0
