@@ -2,6 +2,36 @@
 
 ## Scripts
 
+### duplicate_sample_names.R
+
+`duplicate_sample_names.R`  - Read all the files in a given directory and prints out
+the duplicate sample names in each file. The files should have sample names in 
+first row (e.g. Anacapa taxonomy results) or sample names in the first column
+(e.g. field data or samples metadata).
+
+
+#### Usage
+
+1. Run the script. Pass in the name of the directory contains files for a research project. 
+
+
+```
+$  Rscript duplicate_sample_names.R <directory>
+```
+output
+```
+[1] "./project/16S.csv"
+[1] "Duplicate sample names!!"
+[1] "K0001_E4" "K0002_T9"
+[1] "---------------"
+[1] "./project/18S.csv"
+[1] "OK"
+[1] "---------------"
+[1] "./project/metadata.csv"
+[1] "OK"
+[1] "---------------"
+```
+
 ### rename_sample_headers.R
 
 `rename_sample_headers.R` - Read all the Anacapa taxonomy result files in a given
@@ -55,11 +85,13 @@ with separate columns for each rank.
 original file 
 ```
 sum.taxonomy
+s;p;c;;NA;g;s
 ```
 
 new file
 ```
 sum.taxonomy  superkingdom  phylum  class  order  family  genus  species
+s;p;c;;NA;g;s s             p       c                     g      s
 ```
 
 #### Usage
@@ -83,10 +115,14 @@ A new directory will be created inside the original directory with the new files
 
 To run tests.
 ```R
+# RStudio console
+
 > testthat::test_dir('tests')
 ```
 
 To check code style.
-```
+```{bash}
+# Terminal
+
 $ Rscript ./lib/format_files.R
 ```

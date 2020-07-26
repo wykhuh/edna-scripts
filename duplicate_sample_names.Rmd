@@ -1,0 +1,38 @@
+---
+title: "Untitled"
+---
+
+```{r}
+source('./lib/process_csv.R')
+source('./lib/process_samples.R')
+
+```
+
+
+Get all files in a directory
+```{r}
+directory <- './demo_data/duplicate_sample_names'
+filenames <- list.files(directory, pattern = "*.*", full.names = TRUE, recursive = TRUE)
+filenames
+```
+
+
+
+```{r}
+for(file in filenames) {
+  print(file)
+  delim = get_delimiter(file)
+  df <- read.csv(file, header = F, sep = delim, stringsAsFactors=FALSE)
+  
+  second_row <- df[2,]
+  if(is_eDNA_results(second_row)) {
+    sample_names <- unname(unlist(df[1, ]))
+    display_duplicate_values(sample_names)
+  } else {
+    sample_names <- t(df)[1,]
+    display_duplicate_values(sample_names)
+  }
+  print('---------------')
+}
+```
+

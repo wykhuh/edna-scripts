@@ -52,7 +52,7 @@ get_ranks_for_taxon_string <- function(taxon_string) {
 
 # create a copy of a file with taxon string broken up into separate columns
 add_taxon_rank_columns <- function(df, output_file) {
-  ranks <- get_ranks_for_taxon_string(df[1, 1][1])
+  ranks <- get_ranks_for_taxon_string(df["sum.taxonomy"][1, 1])
 
   new_df <- df %>%
     tidyr::separate(sum.taxonomy, ranks, ";", remove = FALSE)
@@ -61,4 +61,30 @@ add_taxon_rank_columns <- function(df, output_file) {
 
   print(paste("creating", output_file))
   write.csv(new_df, output_file, row.names = FALSE)
+}
+
+# check if file has eDNA results
+is_edna_results <- function(row) {
+  starts_with__taxon_string <- grepl("^.*?;.*;.*;.*;.*;.*$", row[1])
+  ends_read_counts <- grepl("^[0-9]+$", row[-1])
+  starts_with__taxon_string && ends_read_counts
+}
+
+# find duplicate values in a vector
+get_duplicates_for_vector <- function(vector) {
+  duplicated(vector)
+}
+
+# display duplicate values for a given vector
+display_duplicate_values <- function(vector) {
+  dups <- get_duplicates_for_vector(vector)
+  if (any(dups)) {
+    dup_values <- vector[dups]
+    print("Duplicate sample names!!")
+    print(dup_values)
+    dup_values
+  } else {
+    print("OK")
+    NA
+  }
 }

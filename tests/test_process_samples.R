@@ -8,6 +8,7 @@ describe("fuzzy_find_matching_barcode", {
   it("returns a valid barcode that matches the  original barcode", {
     valid_barcodes <- c("good", "great")
     original_barcode <- "xxx_good.xxx"
+
     results <- fuzzy_find_matching_barcode(valid_barcodes, original_barcode)
 
     expect_equal(results, "good")
@@ -18,6 +19,7 @@ describe("fuzzy_find_matching_barcode", {
   it("returns original barcode", {
     valid_barcodes <- c("good", "great")
     original_barcode <- "xxx_bad.xxx"
+
     results <- fuzzy_find_matching_barcode(valid_barcodes, original_barcode)
 
     expect_equal(results, "xxx_bad.xxx")
@@ -28,6 +30,7 @@ describe("fuzzy_find_matching_barcode", {
   it("returns valid barcode if original barcode has extra characters", {
     valid_barcodes <- c("good", "great")
     original_barcode <- "xxx_xxgreatxx.xxx"
+
     results <- fuzzy_find_matching_barcode(valid_barcodes, original_barcode)
 
     expect_equal(results, "great")
@@ -36,6 +39,7 @@ describe("fuzzy_find_matching_barcode", {
   it("returns original barcode if original doesn't have all the characters", {
     valid_barcodes <- c("good", "great")
     original_barcode <- "xxx_gre.xxx"
+
     results <- fuzzy_find_matching_barcode(valid_barcodes, original_barcode)
 
     expect_equal(results, "xxx_gre.xxx")
@@ -50,6 +54,7 @@ describe("reformat_sample_barcodes", {
       "sum.taxonomy", "X18S_K0001.S", "X18S_water.S",
       "X18S_K0002.S"
     )
+
     results <- reformat_sample_barcodes(raw_barcodes, valid_barcodes)
 
     expect_equal(results, c("sum.taxonomy", "K0001", "water", "K0002"))
@@ -60,6 +65,7 @@ describe("reformat_sample_barcodes", {
       "sum.taxonomy", "X18S_K0001.S", "X18S_water.S",
       "X18S_K0.S"
     )
+
     results <- reformat_sample_barcodes(raw_barcodes, valid_barcodes)
 
     expect_equal(results, c("sum.taxonomy", "K0001", "water", "X18S_K0.S"))
@@ -71,6 +77,7 @@ describe("reformat_sample_barcodes", {
       "sum.taxonomy", "X18S_water.S", "X18S_K0002.S",
       "X18S_K0001.S"
     )
+
     results <- reformat_sample_barcodes(raw_barcodes, valid_barcodes)
 
     expect_equal(results, c("sum.taxonomy", "water", "K0002", "K0001"))
@@ -85,6 +92,7 @@ describe("remove_blank_samples", {
       "XX_blank_1.XX" = c(2, 20),
       "XX_sample_2.XX" = c(3, 30)
     )
+
     results <- remove_blank_samples(df)
     expected_columns <- c("sum.taxonomy", "XX_sample_1.XX", "XX_sample_2.XX")
 
@@ -128,5 +136,19 @@ describe("get_ranks_for_taxon_string", {
     str <- "bad"
 
     expect_error(get_ranks_for_taxon_string(str), "Invalid taxonomy string.")
+  })
+})
+
+describe("display_duplicate_values", {
+  it("returns duplicate values when there are duplicated values", {
+    values <- c(1, 2, 3, 1, 3)
+
+    expect_equal(display_duplicate_values(values), c(1, 3))
+  })
+
+  it("returns NA  when there are no duplicated values", {
+    values <- c(1, 2, 3)
+
+    expect_equal(display_duplicate_values(values), NA)
   })
 })
