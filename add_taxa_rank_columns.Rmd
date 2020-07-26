@@ -11,7 +11,7 @@ list.files(path = "demo_data", full.names = TRUE)
 
 
 ```{r}
-path = './demo_data/taxonomy.txt'
+path = './demo_data/rename_sample_headers/results/16s.txt'
 df = read.csv(path)
 
 ranks =  c("superkingdom", "phylum", "class", "order", "family", "genus", "species")
